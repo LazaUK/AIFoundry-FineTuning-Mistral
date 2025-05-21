@@ -7,11 +7,11 @@ This guide walks you through the process of fine-tuning Mistral 7B AI model usin
 
 ## 📑 Table of Contents
 - [Prerequisites](#prerequisites)
-- [Environment Setup](#environment-setup)
-- [Job Payload Definition](#job-payload-definition)
-- [Job Submission](#job-submission)
-- [Monitoring Job Status](#monitoring-job-status)
-- [Endpoint Deployment](#endpoint-deployment-optional)
+- [Environment Setup](#step-1-environment-setup)
+- [Job Payload Definition](#step-2-job-payload-definition)
+- [Job Submission](#step-3-job-submission)
+- [Monitoring Job Status](#step-4-monitoring-job-status)
+- [Endpoint Deployment](#step-5-endpoint-deployment-optional)
 
 ## Prerequisites
 Before you begin, ensure you have the following:
@@ -23,7 +23,7 @@ Before you begin, ensure you have the following:
 pip install azure-identity azure-ai-ml
 ```
 
-## Environment Setup
+## Step 1: Environment Setup
 Set up your environment variables to make provided Jupyter notebook work:
 
 | Variable                  | Description                                      |
@@ -33,15 +33,15 @@ Set up your environment variables to make provided Jupyter notebook work:
 | `workspace_name`          | Azure ML workspace name.                         |
 | `model_registry`          | Azure ML model registry name.                    |
 
-## Job Payload Definition
+## Step 2: Job Payload Definition
 (Details on how to define the job payload would be added here if provided in the original context.)
 
-## Job Submission
+## Step 3: Job Submission
 (Details on how to submit the job would be added here if provided in the original context.)
 
-## Monitoring Job Status
+## Step 4: Monitoring Job Status
 You can monitor the job in the Azure AI Studio portal or poll the job status using the REST API.
 ![Mistral_FT_JobProgress](images/Mistral_FT_JobProgress.png)
 
-## Endpoint Deployment (Optional)
+## Step 5: Endpoint Deployment (Optional)
 Once the job completes successfully, you can register and deploy the model using Azure AI Studio or the REST API. Please note that deployment steps are not yet fully supported via Foundry REST for all models.
