@@ -98,6 +98,13 @@ try:
 except Exception:
     print("Response Text:", response.text)
 ```
+If successful, you should see an update in your notebook cell, similar to this:
+``` Python
+Status Code: 201
+Response JSON: {'id': '/subscriptions/xxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxx/providers/Microsoft.MachineLearningServices/workspaces/xxxxxxxxxxx/jobs/mistral-finetuning-job', 'name': 'mistral-finetuning-job', 'type': 'Microsoft.MachineLearningServices/workspaces/jobs', 'properties': {'description': None, 'tags': {}, 'properties': {'PipelineType': 'FineTuning', 'original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19', 'azureml.ModelName': 'mistralai-Mistral-7B-v01', 'azureml.PipelineType': 'FineTuning', 'azureml.original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19',
+.....
+'queueSettings': None, 'outputs': {'registered_model': {'description': None, 'uri': None, 'assetName': 'Mistral-7B-v01-Finetune', 'mode': 'ReadWriteMount', 'jobOutputType': 'mlflow_model'}}}, 'systemData': {'createdAt': '2025-05-21T00:20:48.3840162+00:00', 'createdBy': 'Laziz Turakulov', 'createdByType': 'User'}}
+```
 
 ## Step 4: Monitoring Job Status
 You can monitor the job in the Azure AI Studio portal or poll the job status using the REST API.
