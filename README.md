@@ -6,14 +6,14 @@ This guide walks you through the process of fine-tuning Mistral 7B AI model usin
 > The Python code and training datasets in this repo are adapted from Microsoft's [Azure Machine Learning examples](https://github.com/Azure/azureml-examples/tree/main/sdk/python/jobs/finetuning) repo.
 
 ## 📑 Table of Contents
-- [Prerequisites](#-prerequisites)
-- [Environment Setup](#-environment-setup)
-- [Job Payload Definition](#-job-payload-definition)
-- [Job Submission](#-job-submission)
-- [Monitoring Job Status](#-monitoring-job-status)
-- [Endpoint Deployment](#-endpoint-deployment-optional)
+- [Prerequisites](#prerequisites)
+- [Environment Setup](#environment-setup)
+- [Job Payload Definition](#job-payload-definition)
+- [Job Submission](#job-submission)
+- [Monitoring Job Status](#monitoring-job-status)
+- [Endpoint Deployment](#endpoint-deployment-optional)
 
-## ✅ Prerequisites
+## Prerequisites
 Before you begin, ensure you have the following:
 - **Azure Subscription**: Your subscription must be allow-listed for MaaP (Model-as-a-Platform) preview;
 - **Azure AI Project**: Make sure your project is created and accessible;
@@ -23,7 +23,7 @@ Before you begin, ensure you have the following:
 pip install azure-identity azure-ai-ml
 ```
 
-## ⚙️ Environment Setup
+## Environment Setup
 Set up your environment variables to make provided Jupyter notebook work:
 
 | Variable                  | Description                                      |
@@ -33,15 +33,15 @@ Set up your environment variables to make provided Jupyter notebook work:
 | `workspace_name`          | Azure ML workspace name.                         |
 | `model_registry`          | Azure ML model registry name.                    |
 
-## 🧱 Job Payload Definition
+## Job Payload Definition
 (Details on how to define the job payload would be added here if provided in the original context.)
 
-## 🚀 Job Submission
+## Job Submission
 (Details on how to submit the job would be added here if provided in the original context.)
 
-## 📊 Monitoring Job Status
+## Monitoring Job Status
 You can monitor the job in the Azure AI Studio portal or poll the job status using the REST API.
 ![Mistral_FT_JobProgress](images/Mistral_FT_JobProgress.png)
 
-## 🌐 Endpoint Deployment (Optional)
+## Endpoint Deployment (Optional)
 Once the job completes successfully, you can register and deploy the model using Azure AI Studio or the REST API. Please note that deployment steps are not yet fully supported via Foundry REST for all models.
