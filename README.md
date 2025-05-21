@@ -24,8 +24,14 @@ Before you begin, ensure you have the following:
 - **Python Packages**: Ensure you have the necessary Python packages installed for interacting with Azure AI Foundry. (Specific package names would be added here if provided in the original context.)
 
 ## ⚙️ Environment Setup
-Set the following environment variables in your system or notebook:
+Set up your environment variables to make provided Jupyter notebook work:
 
+| Variable                  | Description                                      |
+| ------------------------- | ------------------------------------------------ |
+| `subscription_id`         | Azure subscription ID.                           |
+| `resource_group`          | Azure ML resource group name.                    |
+| `workspace_name`          | Azure ML workspace name.                         |
+| `model_registry`          | Azure ML model registry name.                    |
 
 ## 🧱 Job Payload Definition
 (Details on how to define the job payload would be added here if provided in the original context.)
