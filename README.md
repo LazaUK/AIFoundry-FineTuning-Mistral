@@ -15,6 +15,7 @@ This guide walks you through the process of fine-tuning Mistral 7B AI model in *
 
 ## Prerequisites
 Before you begin, ensure you have the following:
+- **Azure Subscription**: Your subscription must be **allowlisted** for MaaP preview.
 - **Azure AI Project**: Make sure your project is created and accessible;
 - **Managed Identity**: If using a *User-Assigned Managed Identity*, ensure that it has the *Storage Blob Data Contributor* RBAC role assigned to access the **AI Hub's storage account**;
 - **Python Packages**: Install the necessary Python packages for interacting with Azure AI Foundry and Entra ID.
@@ -23,20 +24,20 @@ pip install azure-identity azure-ai-ml
 ```
 
 > [!WARNING]
-> Fine-tuning of non-Azure-OpenAI models on MaaP is currently in Preview mode. Your subscription must be allow-listed to access this functionality.
+> Fine-tuning of non-Azure-OpenAI models on MaaP is currently in **Preview mode**. Your subscription must be allow-listed to access this functionality.
 
 ## Step 1: Environment Setup
-Set up your environment variables to make provided Jupyter notebook work:
+Set up your environment variables to ensure the provided Jupyter notebook works correctly:
 
-| Variable                     | Description                                      |
-| ---------------------------- | ------------------------------------------------ |
-| `SUBSCRIPTION_ID`            | Azure subscription ID.                           |
-| `RESOURCE_GROUP`             | Azure ML resource group name.                    |
-| `WORKSPACE_NAME`             | Azure ML workspace name.                         |
-| `MANAGED_IDENTITY_OBJECTID`  | ObjectID of AI Hub's managed identity.           |
+| Variable                   | Description                                 | Example Value                                  |
+| :------------------------- | :------------------------------------------ | :--------------------------------------------- |
+| `SUBSCRIPTION_ID`          | Your Azure subscription ID.                 | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`         |
+| `RESOURCE_GROUP`           | Your Azure ML resource group name.          | `my-resource-group`                            |
+| `WORKSPACE_NAME`           | Your Azure ML workspace name.               | `my-ai-workspace`                              |
+| `MANAGED_IDENTITY_OBJECTID`| ObjectID of your AI Hub's managed identity. | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`         |
 
 ## Step 2: Job Payload Definition
-The payload structure allows you to adjust relevant settings of finetuning job: from hyper-parameters like learning rate or number of epochs to SKU of the SKU of the target compute instance.
+The payload structure allows you to adjust relevant settings for your fine-tuning job, from hyper-parameters like learning rate or number of epochs to the SKU of the target compute instance.
 
 ``` Python
 payload = {
@@ -98,7 +99,7 @@ try:
 except Exception:
     print("Response Text:", response.text)
 ```
-If successful, you should see an update in your notebook cell, similar to this:
+If successful, you should see output similar to this:
 ``` JSON
 Status Code: 201
 Response JSON: {'id': '/subscriptions/xxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxx/providers/Microsoft.MachineLearningServices/workspaces/xxxxxxxxxxx/jobs/mistral-finetuning-job', 'name': 'mistral-finetuning-job', 'type': 'Microsoft.MachineLearningServices/workspaces/jobs', 'properties': {'description': None, 'tags': {}, 'properties': {'PipelineType': 'FineTuning', 'original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19', 'azureml.ModelName': 'mistralai-Mistral-7B-v01', 'azureml.PipelineType': 'FineTuning', 'azureml.original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19',
@@ -107,8 +108,8 @@ Response JSON: {'id': '/subscriptions/xxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxx/p
 ```
 
 ## Step 4: Monitoring Job Status
-You can monitor the job in the Azure AI Studio portal or poll the job status using the REST API.
+You can monitor the job in the Azure AI Foundry portal or poll the job status using the REST API.
 ![Mistral_FT_JobProgress](images/Mistral_FT_JobProgress.png)
 
 ## Step 5: Endpoint Deployment (Optional)
-Once the job completes successfully, you can register and deploy the model using Azure AI Studio or the REST API. Please note that deployment steps are not yet fully supported via Foundry REST for all models.
+Once the job completes successfully, you can register and deploy the model using Azure AI Foundry or the REST API.
