@@ -7,21 +7,22 @@ This guide walks you through the process of fine-tuning Mistral 7B AI model usin
 
 ## 📑 Table of Contents
 - [Prerequisites](#prerequisites)
-- [Environment Setup](#step-1-environment-setup)
-- [Job Payload Definition](#step-2-job-payload-definition)
-- [Job Submission](#step-3-job-submission)
-- [Monitoring Job Status](#step-4-monitoring-job-status)
-- [Endpoint Deployment](#step-5-endpoint-deployment-optional)
+- [Step 1: Environment Setup](#step-1-environment-setup)
+- [Step 2: Job Payload Definition](#step-2-job-payload-definition)
+- [Step 3: Job Submission](#step-3-job-submission)
+- [Step 4: Monitoring Job Status](#step-4-monitoring-job-status)
+- [Step 5: Endpoint Deployment](#step-5-endpoint-deployment-optional)
 
 ## Prerequisites
 Before you begin, ensure you have the following:
-- **Azure Subscription**: Your subscription must be allow-listed for MaaP (Model-as-a-Platform) preview;
 - **Azure AI Project**: Make sure your project is created and accessible;
-- **Managed Identity**: If using a **System-Assigned Managed Identity, you should have all the required roles pre-assigned. If using a **User-Assigned Managed Identity**, ensure that it has the **Storage Blob Data Contributor** role to access the **AI Hub's storage account**;
-- **Python Packages**: Ensure you have the necessary Python packages installed for interacting with Azure AI Foundry.
+- **Managed Identity**: If using a **User-Assigned Managed Identity**, ensure that it has the **Storage Blob Data Contributor** RBAC role assigned to access the **AI Hub's storage account**;
+- **Python Packages**: Install the necessary Python packages for interacting with Azure AI Foundry and Entra ID.
 ``` PowerShell
 pip install azure-identity azure-ai-ml
 ```
+> [!WARNING]
+> Fine-tuning of non-Azure-OpenAI models on MaaP (Model-as-a-Platform) is currently in Preview mode. Your subscription must be allow-listed to access this functionality.
 
 ## Step 1: Environment Setup
 Set up your environment variables to make provided Jupyter notebook work:
