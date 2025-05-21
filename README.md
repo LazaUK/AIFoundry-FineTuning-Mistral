@@ -21,6 +21,7 @@ Before you begin, ensure you have the following:
 ``` PowerShell
 pip install azure-identity azure-ai-ml
 ```
+
 > [!WARNING]
 > Fine-tuning of non-Azure-OpenAI models on MaaP is currently in Preview mode. Your subscription must be allow-listed to access this functionality.
 
@@ -35,10 +36,68 @@ Set up your environment variables to make provided Jupyter notebook work:
 | `MANAGED_IDENTITY_OBJECTID`  | ObjectID of AI Hub's managed identity.           |
 
 ## Step 2: Job Payload Definition
-(Details on how to define the job payload would be added here if provided in the original context.)
+The payload structure allows you to adjust relevant settings of finetuning job: from hyper-parameters like learning rate or number of epochs to SKU of the SKU of the target compute instance.
+
+``` Python
+payload = {
+    "properties": {
+        "displayName": JOB_NAME,
+        "experimentName": EXPERIMENT_NAME,
+        "identity": {
+            "identityType": "Managed",
+            "objectId": MANAGED_IDENTITY_OBJECTID
+        },
+        "fineTuningDetails": {
+            "hyperParameters": {
+                "learning_rate": 0.00002,
+                "num_train_epochs": 1,
+                "per_device_train_batch_size": 1
+            },
+            "model": {
+                "jobInputType": "mlflow_model",
+                "mode": "ReadOnlyMount",
+                "uri": MODEL_NAME
+            },
+            "modelProvider": "Custom",
+            "taskType": "TextCompletion",
+            "trainingData": {
+                "jobInputType": "uri_file",
+                "mode": "ReadOnlyMount",
+                "uri": data_asset_id
+            }
+        },
+        "jobType": "FineTuning",
+        "outputs": {
+            "registered_model": {
+                "assetname": FT_MODEL_NAME,
+                "jobOutputType": "mlflow_model"
+            }
+        },
+        "resources": {
+            "instanceTypes": [
+                INSTANCE_SKU
+            ]
+        }
+    }
+}
+```
 
 ## Step 3: Job Submission
-(Details on how to submit the job would be added here if provided in the original context.)
+Once you authenticate and retrieve the Entra ID token, you fine-tuning job can be submitted through the REST API:
+``` Python
+response = requests.put(
+    endpoint,
+    headers = headers,
+    json = payload
+)
+
+print("Status Code:", response.status_code)
+
+try:
+    print("Response JSON:", response.json())
+except Exception:
+    print("Response Text:", response.text)
+```
 
 ## Step 4: Monitoring Job Status
 You can monitor the job in the Azure AI Studio portal or poll the job status using the REST API.
