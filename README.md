@@ -99,7 +99,7 @@ except Exception:
     print("Response Text:", response.text)
 ```
 If successful, you should see an update in your notebook cell, similar to this:
-``` Python
+``` JSON
 Status Code: 201
 Response JSON: {'id': '/subscriptions/xxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxx/providers/Microsoft.MachineLearningServices/workspaces/xxxxxxxxxxx/jobs/mistral-finetuning-job', 'name': 'mistral-finetuning-job', 'type': 'Microsoft.MachineLearningServices/workspaces/jobs', 'properties': {'description': None, 'tags': {}, 'properties': {'PipelineType': 'FineTuning', 'original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19', 'azureml.ModelName': 'mistralai-Mistral-7B-v01', 'azureml.PipelineType': 'FineTuning', 'azureml.original_model_id': 'azureml://registries/azureml/models/mistralai-Mistral-7B-v01/versions/19',
 .....
