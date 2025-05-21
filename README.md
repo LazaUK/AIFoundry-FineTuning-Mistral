@@ -17,7 +17,7 @@ This guide walks you through the process of fine-tuning Mistral 7B AI model in *
 Before you begin, ensure you have the following:
 - **Azure Subscription**: Your subscription must be **allowlisted** for MaaP preview.
 - **Azure AI Project**: Make sure your project is created and accessible;
-- **Managed Identity**: If using a *User-Assigned Managed Identity*, ensure that it has the *Storage Blob Data Contributor* RBAC role assigned to access the **AI Hub's storage account**;
+- **Managed Identity**: If using a *User-Assigned Managed Identity* with your **AI Hub's workspace** resource, ensure that it has the *Storage Blob Data Contributor* RBAC role assigned to access the **AI Hub's storage account**;
 - **Python Packages**: Install the necessary Python packages for interacting with Azure AI Foundry and Entra ID.
 ``` PowerShell
 pip install azure-identity azure-ai-ml
