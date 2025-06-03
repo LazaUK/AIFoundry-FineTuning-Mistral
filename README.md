@@ -42,7 +42,7 @@ The payload structure allows you to adjust relevant settings for your fine-tunin
 ``` Python
 payload = {
     "properties": {
-        "displayName": JOB_NAME,
+        "displayName": DISPLAY_NAME,
         "experimentName": EXPERIMENT_NAME,
         "identity": {
             "identityType": "Managed",
@@ -50,7 +50,7 @@ payload = {
         },
         "fineTuningDetails": {
             "hyperParameters": {
-                "learning_rate": 0.00002,
+                "learning_rate": 5e-6,
                 "num_train_epochs": 1,
                 "per_device_train_batch_size": 1
             },
@@ -60,7 +60,7 @@ payload = {
                 "uri": MODEL_NAME
             },
             "modelProvider": "Custom",
-            "taskType": "TextCompletion",
+            "taskType": TASK_TYPE,
             "trainingData": {
                 "jobInputType": "uri_file",
                 "mode": "ReadOnlyMount",
@@ -76,9 +76,9 @@ payload = {
         },
         "resources": {
             "instanceTypes": [
-                INSTANCE_SKU
+                GPU, CPU
             ]
-        }
+        },
     }
 }
 ```
