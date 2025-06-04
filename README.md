@@ -109,7 +109,7 @@ Response JSON: {'id': '/subscriptions/xxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxx/p
 
 ## Step 4: Monitoring Job Status
 You can monitor the job in the Azure AI Foundry portal or poll the job status using the REST API.
-![Mistral_FT_JobProgress](images/Mistral_FT_JobProgress.png)
+![Mistral7b_FT_JobProgress](images/Mistral_FT_JobProgress.png)
 
 ## Step 5: Endpoint Deployment (Optional)
 Once the job completes successfully, you can register and deploy the model using Azure AI Foundry or the REST API.
